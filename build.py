@@ -279,8 +279,7 @@ def badge(s):
 def phone(s, cls="", alarm=False, name=None, age=None):
     alarm_html = f"""
       <div class="alarm" aria-hidden="true">
-        <div class="waves"><i></i><i></i><i></i></div>
-        <div class="bell">{ICON['bell']}</div>
+        <div class="bell"><span class="waves"><i></i><i></i><i></i></span>{ICON['bell']}</div>
         <strong>{s['alarm_title']}</strong>
         <span>{s['alarm_sub']}</span>
         <div class="btns"><b>{s['snooze']}</b><b>{s['fed']}</b></div>
@@ -338,15 +337,15 @@ def landing(lang):
     principles = "".join(f'<li class="reveal" style="--i:{i % 3}"><h3>{t}</h3><p>{p}</p></li>' for i, (t, p) in enumerate(s["principles"]))
     st = s["statement"]
     rows = "".join(f'<div class="row"><b>{w}</b> <span>{w}</span> <b>{w}</b> <span>{w}</span></div>' for w in st)
-    diagram = f"""<svg class="diagram reveal" viewBox="0 0 520 380" role="img" aria-label="{s['pv_title']}">
-        <path class="wire" d="M110 120 C 180 60, 200 60, 260 70"/>
-        <path class="wire" d="M410 120 C 340 60, 320 60, 260 70"/>
-        <path class="blocked" d="M260 110 L 260 260"/>
-        <line class="x" x1="246" y1="172" x2="274" y2="200"/><line class="x" x1="274" y1="172" x2="246" y2="200"/>
-        <g class="node"><rect x="190" y="30" width="140" height="80" rx="22"/><text x="260" y="66" text-anchor="middle">{s['dg_cloud']}</text><text class="sub" x="260" y="88" text-anchor="middle">{s['dg_private']}</text></g>
-        <g class="node"><rect x="30" y="120" width="160" height="70" rx="22"/><text x="110" y="161" text-anchor="middle">{s['dg_you']}</text></g>
-        <g class="node"><rect x="330" y="120" width="160" height="70" rx="22"/><text x="410" y="161" text-anchor="middle">{s['dg_partner']}</text></g>
-        <g class="node" opacity=".7"><rect x="160" y="260" width="200" height="80" rx="22"/><text x="260" y="296" text-anchor="middle">{s['dg_us']}</text><text class="sub" x="260" y="318" text-anchor="middle">{s['dg_us_sub']}</text></g>
+    diagram = f"""<svg class="diagram reveal" viewBox="0 0 440 360" role="img" aria-label="{s['pv_title']}">
+        <path class="wire" d="M105 140 C 105 118, 150 126, 150 104"/>
+        <path class="wire" d="M335 140 C 335 118, 290 126, 290 104"/>
+        <path class="blocked" d="M220 104 L 220 260"/>
+        <line class="x" x1="207" y1="222" x2="233" y2="248"/><line class="x" x1="233" y1="222" x2="207" y2="248"/>
+        <g class="node"><rect x="110" y="20" width="220" height="84" rx="24"/><text x="220" y="57" text-anchor="middle">{s['dg_cloud']}</text><text class="sub" x="220" y="81" text-anchor="middle">{s['dg_private']}</text></g>
+        <g class="node"><rect x="10" y="140" width="190" height="70" rx="24"/><text x="105" y="181" text-anchor="middle">{s['dg_you']}</text></g>
+        <g class="node"><rect x="240" y="140" width="190" height="70" rx="24"/><text x="335" y="181" text-anchor="middle">{s['dg_partner']}</text></g>
+        <g class="node" opacity=".7"><rect x="110" y="260" width="220" height="80" rx="24"/><text x="220" y="296" text-anchor="middle">{s['dg_us']}</text><text class="sub" x="220" y="320" text-anchor="middle">{s['dg_us_sub']}</text></g>
       </svg>"""
     sync = '<svg class="sync" viewBox="0 0 220 60" aria-hidden="true"><path d="M0 40 C 60 0, 160 0, 220 40"/></svg>'
     html = head(s, lang, base, s["title"], s["description"], "") + nav(s, lang, base, "index.html", home) + f"""

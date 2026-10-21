@@ -148,6 +148,17 @@
   const story = $(".story");
   const chapters = story ? $$(".chapter", story) : [];
   const bars = story ? $$(".progress i", story) : [];
+  // On phones the story stacks: size the phone to the room left above the chapter text.
+  const stacked = matchMedia("(max-width: 900px)");
+  const fitStory = () => {
+    if (!story) return;
+    if (!stacked.matches) { story.style.removeProperty("--fit"); return; }
+    const room = $(".phones", story).clientHeight;
+    story.style.setProperty("--fit", Math.max(.3, Math.min(.62, (room - 12) / 714)).toFixed(3));
+  };
+  fitStory();
+  addEventListener("resize", fitStory);
+  stacked.addEventListener("change", fitStory);
 
   const depthEls = $$("[data-depth]");
 
