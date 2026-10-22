@@ -13,12 +13,25 @@ CONTACT_URL = "https://github.com/marcogaroglio-online/melian-site/issues/new"
 UPDATED = {"en": "17 October 2026", "it": "17 ottobre 2026"}
 
 ICON = {
-    "moon": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3.2a8.6 8.6 0 1 0 6.3 12.6A7.2 7.2 0 0 1 14.5 3.2Z"/><path d="m18.6 2.5.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5Z"/><path d="m21.4 7.4.3 1 1 .3-1 .3-.3 1-.3-1-1-.3 1-.3Z"/></svg>',
-    "bottle": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h6v2.2l1.4 2.3c.4.6.6 1.3.6 2V20a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8.5c0-.7.2-1.4.6-2L9 4.2Z"/></svg>',
-    "drop": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5S5 10 5 14.6A7 7 0 0 0 19 14.6C19 10 12 2.5 12 2.5Z"/></svg>',
-    "leaf": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5S8 2.6 4.8 9.6c-1.6 3.5-.4 7 1.6 8.6C9.7 13 13.5 10.6 16 9.6c-3.4 2-6.8 5.4-8.6 9.6 3.6 1.4 8.3.6 10.8-3.6 2.6-4.3 2.3-12.1 2.3-12.1Z"/></svg>',
-    "half": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3S5.5 10.2 5.5 14.6a6.5 6.5 0 0 0 13 0C18.5 10.2 12 3 12 3Z"/><path fill="currentColor" stroke="none" d="M5.6 14h12.8a6.5 6.5 0 0 1-12.8 0Z"/></svg>',
+    # Drawn after the SF Symbols Melian uses (moon.stars.fill, waterbottle.fill, drop.fill, leaf.fill, drop.halffull…).
+    "moon": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 4.1a8.2 8.2 0 1 0 6.9 11.6 7 7 0 0 1-6.9-11.6Z"/><path d="m18 2.6.55 1.7 1.75.55-1.75.55L18 7.1l-.55-1.7-1.75-.55 1.75-.55Z"/><path d="m21.3 7.6.35 1.05 1.05.35-1.05.35-.35 1.05-.35-1.05-1.05-.35 1.05-.35Z"/></svg>',
+    "plus": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M12 4.5v15M4.5 12h15"/></svg>',
+    "check": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg>',
+    "bottle": '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.2 1.5h5.6c.5 0 .8.4.8.8v1.9c0 .5-.3.8-.8.8H9.2c-.5 0-.8-.3-.8-.8V2.3c0-.4.3-.8.8-.8ZM9 6h6l1.6 2.3c.3.4.4.9.4 1.4v10.1a2.7 2.7 0 0 1-2.7 2.7H9.7A2.7 2.7 0 0 1 7 19.8V9.7c0-.5.1-1 .4-1.4Zm3 4.6s-2.3 2.6-2.3 4.1a2.3 2.3 0 0 0 4.6 0c0-1.5-2.3-4.1-2.3-4.1Z"/></svg>',
+    "drop": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2S5 10.1 5 14.8a7 7 0 0 0 14 0C19 10.1 12 2.2 12 2.2Z"/></svg>',
+    "leaf": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.2 3.2c-6.6-.4-12.6.5-15.6 4.7C3.7 10.6 3.9 14 5.6 16.4c.6-1.2 1.5-2.6 2.9-4 1.9-1.9 4.3-3.4 7-4.5-2.4 1.5-4.6 3.3-6.2 5.4-1.5 2-2.5 4.2-3 6.7l1.9.3c.2-1 .5-1.9.9-2.8 2.7 1.6 6.6 1.6 9.3-1.3 3.1-3.4 3.2-8.2 2.8-13Z"/></svg>',
+    "half": '<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" d="M12 3.2S5.6 10.4 5.6 14.8a6.4 6.4 0 0 0 12.8 0C18.4 10.4 12 3.2 12 3.2Z"/><path fill="currentColor" d="M6.6 14.2h10.8a5.4 5.4 0 0 1-10.8 0Z"/></svg>',
+    "chev_l": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>',
+    "chev_r": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg>',
+    "calendar": '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6 3.5h12A3 3 0 0 1 21 6.5v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-11a3 3 0 0 1 3-3Zm-1.2 5v9c0 .7.5 1.2 1.2 1.2h12c.7 0 1.2-.5 1.2-1.2v-9Z"/><g><rect x="7" y="10.5" width="2" height="2" rx=".5"/><rect x="11" y="10.5" width="2" height="2" rx=".5"/><rect x="15" y="10.5" width="2" height="2" rx=".5"/><rect x="7" y="14.5" width="2" height="2" rx=".5"/><rect x="11" y="14.5" width="2" height="2" rx=".5"/><rect x="15" y="14.5" width="2" height="2" rx=".5"/></g></svg>',
+    "chart": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 3.5v17h17"/><path d="m6.5 16 4-5 3.2 2.8L19.5 7"/><path d="M15.5 6.6h4.2v4.2"/></svg>',
+    "gear": '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="3.6" stroke-dasharray="3.3 3.3"/><path fill-rule="evenodd" d="M12 4.6a7.4 7.4 0 1 1 0 14.8 7.4 7.4 0 0 1 0-14.8Zm0 4.4a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>',
+    "signal": '<svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>',
+    "wifi": '<svg viewBox="0 0 17 12" fill="currentColor"><path d="M8.5 2.3c2.4 0 4.6.9 6.3 2.5l1.3-1.3A10.8 10.8 0 0 0 8.5.4 10.8 10.8 0 0 0 .9 3.5l1.3 1.3a9 9 0 0 1 6.3-2.5Zm0 3.7c1.4 0 2.6.5 3.6 1.4l1.3-1.3a7 7 0 0 0-9.8 0l1.3 1.3c1-.9 2.2-1.4 3.6-1.4Zm0 3.6c-.5 0-1 .2-1.3.5l1.3 1.4 1.3-1.4c-.3-.3-.8-.5-1.3-.5Z"/></svg>',
+    "battery": '<svg viewBox="0 0 28 13" fill="none"><rect x=".6" y=".6" width="23.8" height="11.8" rx="3.6" stroke="currentColor" stroke-opacity=".4" stroke-width="1.1"/><rect x="2.4" y="2.4" width="17" height="8.2" rx="2" fill="currentColor"/><path d="M25.9 4.4v4.2a2.2 2.2 0 0 0 0-4.2Z" fill="currentColor" fill-opacity=".45"/></svg>',
     "bell": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a6 6 0 0 0-6 6v4.3L4.3 15.6A1 1 0 0 0 5.2 17h13.6a1 1 0 0 0 .9-1.4L18 12.3V8a6 6 0 0 0-6-6Zm-2.6 16.5a2.7 2.7 0 0 0 5.2 0Z"/></svg>',
+    "torch": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 2.5h8v3.2l-2 3.5V20a2 2 0 0 1-2 2 2 2 0 0 1-2-2V9.2L8 5.7Zm4 9.2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>',
+    "camera": '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.2 4h5.6l1.4 2.2H19a2.5 2.5 0 0 1 2.5 2.5v8.8A2.5 2.5 0 0 1 19 20H5a2.5 2.5 0 0 1-2.5-2.5V8.7A2.5 2.5 0 0 1 5 6.2h2.8Zm2.8 4.6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 1.8a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4Z"/></svg>',
     "apple": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6a4.3 4.3 0 0 0-3.4-1.8c-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3a10 10 0 0 0 1.3-2.6 3.9 3.9 0 0 1-2.5-3.7ZM14.2 5.6A4 4 0 0 0 15.1 2.6a4.1 4.1 0 0 0-2.7 1.4 3.8 3.8 0 0 0-1 2.9 3.4 3.4 0 0 0 2.8-1.3Z"/></svg>',
 }
 
@@ -35,12 +48,19 @@ STRINGS = {
         "ghost": "Read the philosophy",
         "scroll": "Scroll",
         "try": "Try it: tap the buttons on the phone.",
-        "phone_name": "Vittoria", "phone_age": "5 weeks old", "since": "Since last feed", "next": "next",
-        "formula": "Formula", "feeds": "Feeds", "wet": "Wet", "dirty": "Dirty",
-        "feed": "Feed", "repeat": "Tap to log 110 ml", "both": "Both", "timeline": "Timeline",
-        "feed_row": "Feed · 110 ml", "wet_row": "Wet nappy", "dirty_row": "Dirty nappy", "both_row": "Wet & dirty",
-        "alarm_title": "Time for a feed", "alarm_sub": "Vittoria · last fed 3h ago", "snooze": "Snooze", "fed": "Fed",
-        "partner_name": "Vittoria", "partner_age": "On your partner's iPhone",
+        # Words on the drawn phones: copied from the app's String Catalog so they read exactly like Melian.
+        "phone_name": "Vittoria", "phone_age": "5 weeks old", "since": "Since last feed", "next": "next ~{}",
+        "formula": "Formula", "feeds": "Feeds", "wet": "Wet", "dirty": "Dirty", "both": "Both",
+        "feed": "Feed", "repeat": "Hold to repeat 110 ml", "timeline": "Timeline",
+        "feed_row": "Feed · {} ml", "wet_row": "Wet nappy", "dirty_row": "Dirty nappy", "both_row": "Wet & dirty",
+        "tabs": ["Today", "Days", "Growth", "Settings"],
+        "la_title": "Next feed for Vittoria", "la_last": "Last: Feed · 110 ml", "la_around": "around {}", "fed": "Fed",
+        "hour": ["hour", "hours"], "minute": ["minute", "minutes"],
+        "days_title": "Days", "day": "Day", "week": "Week",
+        "d_formula": "Formula", "d_of_ml": "of 640–860 ml", "d_avg": "Average 105 ml a feed",
+        "d_feeds": "Feeds", "d_of": "of 6–8", "d_last_gap": "Last at {} · longest gap 3h 19m",
+        "d_wet": "Wet nappies", "d_least": "at least 6", "d_last": "Last at {}",
+        "d_dirty": "Dirty nappies", "d_varies": "varies from baby to baby",
         "chapters": [
             ("Log it in one tap.", "Half asleep, one hand on the bottle. Feed, wet, dirty: one tap each, from the app, a widget, the Lock Screen or Siri. Melian remembers the last amount, so most feeds take a second."),
             ("Loud when it matters.", "After each feed Melian sets the next one. When it's time it rings like an alarm, even on silent, and it never logs a feed on its own. Meanwhile the countdown waits on your Lock Screen and in the Dynamic Island."),
@@ -128,12 +148,18 @@ STRINGS = {
         "ghost": "Leggi la filosofia",
         "scroll": "Scorri",
         "try": "Provalo: tocca i pulsanti sul telefono.",
-        "phone_name": "Vittoria", "phone_age": "5 settimane", "since": "Dall'ultima poppata", "next": "prossima",
-        "formula": "Latte", "feeds": "Poppate", "wet": "Bagnati", "dirty": "Sporchi",
-        "feed": "Poppata", "repeat": "Tocca per 110 ml", "both": "Entrambi", "timeline": "Cronologia",
-        "feed_row": "Poppata · 110 ml", "wet_row": "Pannolino bagnato", "dirty_row": "Pannolino sporco", "both_row": "Bagnato e sporco",
-        "alarm_title": "È ora della poppata", "alarm_sub": "Vittoria · ultima 3 ore fa", "snooze": "Posticipa", "fed": "Fatto",
-        "partner_name": "Vittoria", "partner_age": "Sull'iPhone del partner",
+        "phone_name": "Vittoria", "phone_age": "5 settimane di vita", "since": "Dall'ultima poppata", "next": "prossima ~{}",
+        "formula": "Latte", "feeds": "Poppate", "wet": "Bagnato", "dirty": "Sporco", "both": "Entrambi",
+        "feed": "Poppata", "repeat": "Tieni premuto per ripetere 110 ml", "timeline": "Cronologia",
+        "feed_row": "Poppata · {} ml", "wet_row": "Pannolino bagnato", "dirty_row": "Pannolino sporco", "both_row": "Bagnato e sporco",
+        "tabs": ["Oggi", "Giorni", "Crescita", "Impostazioni"],
+        "la_title": "Prossima poppata per Vittoria", "la_last": "Ultima: Poppata · 110 ml", "la_around": "verso le {}", "fed": "Fatto",
+        "hour": ["ora", "ore"], "minute": ["minuto", "minuti"],
+        "days_title": "Giorni", "day": "Giorno", "week": "Settimana",
+        "d_formula": "Latte", "d_of_ml": "di 640–860 ml", "d_avg": "Media 105 ml a poppata",
+        "d_feeds": "Poppate", "d_of": "di 6–8", "d_last_gap": "Ultima alle {} · intervallo più lungo 3h 19m",
+        "d_wet": "Pannolini bagnati", "d_least": "almeno 6", "d_last": "Ultima alle {}",
+        "d_dirty": "Pannolini sporchi", "d_varies": "varia da bambino a bambino",
         "chapters": [
             ("Un tocco, ed è registrato.", "Mezzo addormentato, una mano sul biberon. Poppata, bagnato, sporco: un tocco ciascuno, dall'app, da un widget, dalla schermata di blocco o con Siri. Melian ricorda l'ultima quantità, quindi quasi ogni poppata richiede un secondo."),
             ("Suona quando serve.", "Dopo ogni poppata Melian imposta la prossima. Quando è ora suona come una sveglia, anche in silenzioso, e non registra mai una poppata da sola. Nel frattempo il conto alla rovescia resta sulla schermata di blocco e nella Dynamic Island."),
@@ -276,50 +302,106 @@ def badge(s):
     return f"""<span class="badge glass" role="img" aria-label="{s['badge_small']} {s['badge']}">{ICON['apple']}<span><small>{s['badge_small']}</small>{s['badge']}</span></span>"""
 
 
-def phone(s, cls="", alarm=False, name=None, age=None):
-    alarm_html = f"""
-      <div class="alarm" aria-hidden="true">
-        <div class="bell"><span class="waves"><i></i><i></i><i></i></span>{ICON['bell']}</div>
-        <strong>{s['alarm_title']}</strong>
-        <span>{s['alarm_sub']}</span>
-        <div class="btns"><b>{s['snooze']}</b><b>{s['fed']}</b></div>
-      </div>""" if alarm else ""
-    mini = lambda k, label, color: f"""<div class="mini" data-k="{k}"><svg viewBox="0 0 36 36"><circle class="t" cx="18" cy="18" r="15"/><circle class="b" cx="18" cy="18" r="15" stroke="{color}"/></svg><strong>0</strong><span>{label}</span></div>"""
+def ring(r, stroke, cls):
+    """A ring in a box of (2r + stroke) pt: grey track plus a bar the script fills."""
+    c = r + stroke / 2
+    return (f'<svg class="{cls}" viewBox="0 0 {2 * c} {2 * c}" aria-hidden="true">'
+            f'<circle class="track" cx="{c}" cy="{c}" r="{r}" stroke-width="{stroke}"/>'
+            f'<circle class="bar" cx="{c}" cy="{c}" r="{r}" stroke-width="{stroke}"/></svg>')
+
+
+def status_bar():
+    return f'<div class="status"><span class="clock" data-clock>9:41</span><span class="sb">{ICON["signal"]}{ICON["wifi"]}{ICON["battery"]}</span></div>'
+
+
+def tab_bar(s, on):
+    icons = ["moon", "calendar", "chart", "gear"]
+    return '<nav class="tabbar" aria-hidden="true">' + "".join(
+        f'<span class="tab{" on" if i == on else ""}">{ICON[icons[i]]}<b>{t}</b></span>' for i, t in enumerate(s["tabs"])) + "</nav>"
+
+
+def lock_screen(s):
+    """The Lock Screen with Melian's Live Activity, as in FeedActivityView (medium family)."""
+    return f"""
+      <div class="lock" aria-hidden="true">
+        <div class="wall"></div>
+        <div class="status light"><span></span><span class="sb">{ICON["signal"]}{ICON["wifi"]}{ICON["battery"]}</span></div>
+        <div class="when"><span data-date></span><strong data-clock>9:41</strong></div>
+        <div class="activity">
+          <div class="la-row">
+            <span class="badge48">{ring(22, 4, "la-ring")}{ICON["bottle"]}</span>
+            <span class="la-text"><small>{s["la_title"]}</small><b data-countdown></b></span>
+            <span class="la-fed">{ICON["check"]}{s["fed"]}</span>
+          </div>
+          <div class="la-foot"><span>{s["la_last"]}</span><span data-around></span></div>
+        </div>
+        <span class="lk-btn left">{ICON["torch"]}</span><span class="lk-btn right">{ICON["camera"]}</span>
+        <i class="home"></i>
+      </div>"""
+
+
+def days_screen(s):
+    """The top of the Days tab for one day (DaysView), with the ranges the guidance gives."""
+    row = lambda k, label, big, unit, of, sub, done: f"""
+          <div class="d-row" data-k="{k}">
+            <span class="d-ring{' done' if done else ''}">{ring(36, 8, "dr")}<i class="ic">{ICON["check"] if done else ICON[{"wet": "drop", "dirty": "leaf"}[k]]}</i></span>
+            <div><small>{label}</small><p><b>{big}</b>{unit} <em>{of}</em></p><small>{sub}</small></div>
+          </div>"""
+    return f"""
+      <div class="days" aria-hidden="true">
+        {status_bar()}
+        <span class="g-plus">{ICON["plus"]}</span>
+        <h3>{s["days_title"]}</h3>
+        <div class="seg"><span class="on">{s["day"]}</span><span>{s["week"]}</span></div>
+        <div class="d-nav"><span class="g-arrow">{ICON["chev_l"]}</span><span class="d-date" data-day></span><span class="g-arrow">{ICON["chev_r"]}</span></div>
+        {row("formula", s["d_formula"], "840", " ml", s["d_of_ml"], s["d_avg"], True)}
+        {row("feeds", s["d_feeds"], "8", "", s["d_of"], s["d_last_gap"].replace("{}", '<span data-at="0"></span>'), True)}
+        {row("wet", s["d_wet"], "4", "", s["d_least"], s["d_last"].replace("{}", '<span data-at="-163"></span>'), False)}
+        {row("dirty", s["d_dirty"], "5", "", s["d_varies"], s["d_last"].replace("{}", '<span data-at="17"></span>'), False)}
+        {tab_bar(s, 1)}
+      </div>"""
+
+
+def phone(s, cls="", story=False):
+    """Melian's Today tab as live HTML, measured from the app (440 x 956 pt screen, 1em = 1pt)."""
+    mini = lambda k, label, goal, unit, icon: f"""<div class="mini" data-k="{k}" data-goal="{goal or ''}">
+            <span class="mr">{ring(21.5, 4.5, "mring")}<i class="ic">{ICON[icon]}</i><i class="ok">{ICON["check"]}</i></span>
+            <strong>0</strong><small>{f"/ {goal}{unit}" if goal else "&nbsp;"}</small><span>{label}</span></div>"""
+    layers = (lock_screen(s) + days_screen(s)) if story else ""
     return f"""<div class="phone {cls}" data-live>
     <div class="screen">
-      <div class="island"><span class="ic">{ICON['bottle'].replace('<svg', '<svg width="12" height="12"')}</span><span class="t"></span></div>
-      <div class="status"><span>9:41</span><span class="bars"><i></i></span></div>
-      <div class="app">
-        <header>
-          <span class="round-btn" aria-hidden="true">{ICON['moon']}</span>
-          <div class="who"><b>{name or s['phone_name']}</b><span>{age or s['phone_age']}</span></div>
-          <span class="round-btn plus" aria-hidden="true">+</span>
+      <div class="island"><span class="li-ring">{ring(10, 2.4, "isl")}{ICON["bottle"]}</span><span class="li-t" data-next></span></div>
+      {status_bar()}
+      <div class="today">
+        <header class="top">
+          <span class="g-btn moon">{ICON["moon"]}</span>
+          <div class="who"><b>{s["phone_name"]}</b><span>{s["phone_age"]}</span></div>
+          <span class="g-btn plus">{ICON["plus"]}</span>
         </header>
-        <div class="ring">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e8ce0"/><stop offset="1" stop-color="#738cf2"/></linearGradient></defs>
-            <circle class="track" cx="50" cy="50" r="46" fill="none" stroke-width="5"/>
-            <circle class="bar" cx="50" cy="50" r="46" fill="none" stroke-width="5"/>
-          </svg>
-          <div class="label"><small>{s['since']}</small><strong>1h 40m</strong><em></em></div>
+        <div class="big">
+          {ring(108.5, 13, "bring")}
+          <div class="label"><small>{s["since"]}</small><strong data-since>1h 40m</strong><em data-nextline></em></div>
         </div>
         <div class="minis">
-          {mini('formula', s['formula'], '#738cf2')}{mini('feeds', s['feeds'], '#9e8ce0')}{mini('wet', s['wet'], '#54b3db')}{mini('dirty', s['dirty'], '#dba366')}
+          {mini("formula", s["formula"], 750, " ml", "bottle")}{mini("feeds", s["feeds"], 6, "", "bottle")}{mini("wet", s["wet"], 6, "", "drop")}{mini("dirty", s["dirty"], None, "", "leaf")}
         </div>
-        <div class="actions">
-          <button class="act feed" data-kind="feed">{ICON['bottle']}<span>{s['feed']}</span><small>{s['repeat']}</small></button>
-          <button class="act wet" data-kind="wet">{ICON['drop']}<span>{s['wet']}</span></button>
-          <button class="act dirty" data-kind="dirty">{ICON['leaf']}<span>{s['dirty']}</span></button>
-          <button class="act both" data-kind="both">{ICON['half']}<span>{s['both']}</span></button>
+        <button class="act feed" data-kind="feed">{ICON["bottle"]}<b>{s["feed"]}</b><small>{s["repeat"]}</small></button>
+        <div class="nappies">
+          <button class="act wet" data-kind="wet">{ICON["drop"]}<b>{s["wet"]}</b></button>
+          <button class="act dirty" data-kind="dirty">{ICON["leaf"]}<b>{s["dirty"]}</b></button>
+          <button class="act both" data-kind="both">{ICON["half"]}<b>{s["both"]}</b></button>
         </div>
-        <div class="timeline"><h4>{s['timeline']}</h4><ul></ul></div>
-      </div>{alarm_html}
+        <h4 class="tl-h">{s["timeline"]}</h4>
+        <ul class="tl"></ul>
+      </div>
+      {tab_bar(s, 0)}{layers}
     </div>
   </div>"""
 
 
 def strings_script(s):
-    js = {"next": s["next"], "feedRow": s["feed_row"], "wetRow": s["wet_row"], "dirtyRow": s["dirty_row"], "bothRow": s["both_row"]}
+    keys = ["next", "feed_row", "wet_row", "dirty_row", "both_row", "la_around", "hour", "minute"]
+    js = {k: s[k] for k in keys}
     return f"<script>window.MELIAN_STRINGS = {json.dumps(js, ensure_ascii=False)};</script>"
 
 
@@ -350,6 +432,10 @@ def landing(lang):
     sync = '<svg class="sync" viewBox="0 0 220 60" aria-hidden="true"><path d="M0 40 C 60 0, 160 0, 220 40"/></svg>'
     html = head(s, lang, base, s["title"], s["description"], "") + nav(s, lang, base, "index.html", home) + f"""
 <main>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="melianRing" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7d82e4"/><stop offset="1" stop-color="#b7c3f8"/></linearGradient>
+    <linearGradient id="melianMini" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9690e4"/><stop offset="1" stop-color="#aab3f2"/></linearGradient>
+  </defs></svg>
   <section class="hero" id="top">
     <div class="wrap">
       <div>
@@ -371,9 +457,9 @@ def landing(lang):
     <div class="pin">
       <div class="wrap">
         <div class="phones">
-          {phone(s, 'main-phone', alarm=True)}
+          {phone(s, 'main-phone', story=True)}
           {sync}
-          {phone(s, 'partner', name=s['partner_name'], age=s['partner_age'])}
+          {phone(s, 'partner')}
         </div>
         <div>
           <div class="chapters">{chapters}
