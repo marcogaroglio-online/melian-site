@@ -33,74 +33,113 @@
     });
   }
 
-  // ---------- Live phone: ticking timer, real buttons ----------
-  const pad = (n) => String(n).padStart(2, "0");
-  const fmtClock = (d) => d.toLocaleTimeString(lang === "it" ? "it-IT" : "en-GB", { hour: "2-digit", minute: "2-digit" });
-  const fmtSince = (ms) => {
-    const m = Math.max(0, Math.floor(ms / 60000));
-    return m < 60 ? `${m}m` : `${Math.floor(m / 60)}h ${pad(m % 60)}m`;
+  // ---------- Live phones ----------
+  // The demo runs on a pretend evening that starts at 21:41 today (the status bar's 9:41) and moves with
+  // real time. The story's two phones share one day, so a tap on one shows up on the other.
+  const MIN = 60000;
+  const INTERVAL = 180 * MIN;
+  const L = lang === "it" ? "it-IT" : "en-US";
+  const loadAt = Date.now();
+  const evening = new Date(); evening.setHours(21, 41, 0, 0);
+  const simNow = () => new Date(evening.getTime() + (Date.now() - loadAt));
+  const at = (base, minutes) => new Date(base.getTime() + minutes * MIN);
+  const clock = (d) => d.toLocaleTimeString(L, { hour: "numeric", minute: "2-digit" });
+  const clockHTML = (d) => clock(d).replace(/[\s ]?(AM|PM)$/, "<small> $1</small>");
+  const bareClock = (d) => clock(d).replace(/[\s ]?(AM|PM)$/, "");
+  const span = (ms) => {
+    const m = Math.max(0, Math.floor(ms / MIN));
+    return m < 60 ? `${m}m` : `${Math.floor(m / 60)}h ${m % 60}m`;
   };
-  const kinds = {
-    feed: { color: "var(--feed)", icon: "●", label: T.feedRow || "Feed · 110 ml" },
-    wet: { color: "var(--wet)", icon: "●", label: T.wetRow || "Wet nappy" },
-    dirty: { color: "var(--dirty)", icon: "●", label: T.dirtyRow || "Dirty nappy" },
-    both: { color: "var(--both)", icon: "●", label: T.bothRow || "Wet & dirty" },
+  const spell = (ms) => {
+    const m = Math.max(0, Math.ceil(ms / MIN)), h = Math.floor(m / 60), r = m % 60;
+    const unit = (n, [one, many]) => `${n} ${n === 1 ? one : many}`;
+    return [h && unit(h, T.hour || ["hour", "hours"]), (r || !h) && unit(r, T.minute || ["minute", "minutes"])].filter(Boolean).join(", ");
   };
-  const INTERVAL = 3 * 3600 * 1000;
+  const fill = (circle, frac) => {
+    if (!circle) return;
+    const c = 2 * Math.PI * circle.r.baseVal.value;
+    circle.style.strokeDasharray = c;
+    circle.style.strokeDashoffset = c * (1 - Math.max(0, Math.min(1, frac)));
+  };
+  const icons = {};
+  const iconFrom = (sel, k) => { const el = $(sel + " svg"); if (el && !icons[k]) icons[k] = el.outerHTML; };
 
-  $$(".phone[data-live]").forEach((phone) => {
-    let lastFeed = Date.now() - (100 * 60 * 1000); // 1h 40m ago, like the store screenshot
-    const counts = { formula: 840, feeds: 8, wet: 4, dirty: 5 };
-    const goals = { formula: 900, feeds: 9, wet: 6, dirty: 0 };
-    const time = $(".ring strong", phone);
-    const next = $(".ring em", phone);
-    const bar = $(".ring .bar", phone);
-    const C = 2 * Math.PI * 46;
-    if (bar) { bar.style.strokeDasharray = C; }
-    const islandT = $(".island .t", phone);
+  class Day {
+    constructor() {
+      const now = simNow();
+      this.first = at(now, -100);
+      this.lastFeed = this.first;
+      this.counts = { formula: 840, feeds: 8, wet: 4, dirty: 5 };
+      this.events = [
+        { kind: "dirty", at: at(this.first, 17) },
+        { kind: "feed", at: this.first, ml: 110, gap: 177 * MIN },
+        { kind: "wet", at: at(this.first, -163) },
+        { kind: "feed", at: at(this.first, -177), ml: 120, gap: 165 * MIN },
+      ];
+      this.views = [];
+    }
+    log(kind) {
+      const now = simNow();
+      if (kind === "feed") {
+        this.events.unshift({ kind, at: now, ml: 110, gap: now - this.lastFeed, fresh: true });
+        this.lastFeed = now; this.counts.feeds++; this.counts.formula += 110;
+      } else {
+        this.events.unshift({ kind, at: now, fresh: true });
+        if (kind !== "dirty") this.counts.wet++;
+        if (kind !== "wet") this.counts.dirty++;
+      }
+      this.views.forEach((v) => v());
+      this.events[0].fresh = false;
+    }
+  }
 
-    const minis = {};
-    $$(".mini", phone).forEach((m) => { minis[m.dataset.k] = m; });
-    const paintMinis = () => {
-      for (const k in minis) {
-        const m = minis[k];
-        $("strong", m).textContent = counts[k];
-        const b = $(".b", m);
-        const c = 2 * Math.PI * 15;
-        b.style.strokeDasharray = c;
-        const frac = goals[k] ? Math.min(1, counts[k] / goals[k]) : 0.0001;
-        b.style.strokeDashoffset = c * (1 - frac);
+  const label = (e) => ({ feed: (T.feed_row || "Feed · {} ml").replace("{}", e.ml), wet: T.wet_row, dirty: T.dirty_row, both: T.both_row })[e.kind];
+
+  const mount = (phone, day) => {
+    iconFrom(".phone .act.feed", "feed"); iconFrom(".phone .act.wet", "wet");
+    iconFrom(".phone .act.dirty", "dirty"); iconFrom(".phone .act.both", "both");
+    const minis = $$(".mini", phone);
+    const list = $(".tl", phone);
+    const render = () => {
+      const now = simNow();
+      const next = new Date(day.lastFeed.getTime() + INTERVAL);
+      const since = now - day.lastFeed;
+      const frac = since / INTERVAL;
+      $$("[data-clock]", phone).forEach((el) => { el.textContent = bareClock(now); });
+      const set = (sel, text) => $$(sel, phone).forEach((el) => { el.textContent = text; });
+      set("[data-since]", span(since));
+      set("[data-nextline]", (T.next || "next ~{}").replace("{}", clock(next)));
+      set("[data-next]", clock(next));
+      set("[data-countdown]", spell(next - now));
+      set("[data-around]", (T.la_around || "around {}").replace("{}", clock(next)));
+      fill($(".bring .bar", phone), frac);
+      fill($(".isl .bar", phone), frac);
+      fill($(".la-ring .bar", phone), frac);
+      for (const m of minis) {
+        const n = day.counts[m.dataset.k], goal = +m.dataset.goal || 0;
+        $("strong", m).textContent = n;
+        m.classList.toggle("done", goal > 0 && n >= goal);
+        fill($(".mring .bar", m), goal ? n / goal : 0);
+      }
+      if (list) {
+        list.innerHTML = day.events.slice(0, 4).map((e) =>
+          `<li${e.fresh ? ' class="new"' : ""}><time>${clockHTML(e.at)}</time><i class="dot k-${e.kind}">${icons[e.kind] || ""}</i>` +
+          `<span class="what">${label(e)}</span><em class="gap">${e.gap ? span(e.gap) : ""}</em></li>`).join("");
       }
     };
-
-    const tick = () => {
-      const since = Date.now() - lastFeed;
-      if (time) time.textContent = fmtSince(since);
-      if (next) next.textContent = (T.next || "next") + " ~" + fmtClock(new Date(lastFeed + INTERVAL));
-      if (bar) bar.style.strokeDashoffset = C * (1 - Math.min(1, since / INTERVAL));
-      if (islandT) islandT.textContent = fmtSince(since);
-    };
-
-    const list = $(".timeline ul", phone);
-    const add = (kind, at = new Date(), fresh = true) => {
-      if (!list) return;
-      const k = kinds[kind];
-      const li = document.createElement("li");
-      if (fresh) li.className = "new";
-      li.innerHTML = `<time>${fmtClock(at)}</time><i style="background:${k.color}">${k.icon}</i><span>${k.label}</span>`;
-      list.prepend(li);
-      while (list.children.length > 3) list.lastElementChild.remove();
-    };
-
-    // seed the timeline with a believable evening
-    const now = Date.now();
-    add("feed", new Date(now - 100 * 60000 - 3 * 3600000), false);
-    add("wet", new Date(now - 130 * 60000), false);
-    add("feed", new Date(lastFeed), false);
+    // static parts of the Lock Screen and Days layers
+    $$("[data-date]", phone).forEach((el) => {
+      el.textContent = simNow().toLocaleDateString(lang === "it" ? "it-IT" : "en-GB", { weekday: "long", day: "numeric", month: "long" });
+    });
+    $$("[data-day]", phone).forEach((el) => {
+      el.textContent = simNow().toLocaleDateString(L, { day: "numeric", month: "short", year: "numeric" });
+    });
+    $$("[data-at]", phone).forEach((el) => { el.innerHTML = clockHTML(at(day.first, +el.dataset.at)); });
+    const dayFrac = { formula: 1, feeds: 1, wet: 4 / 6, dirty: 0 };
+    $$(".d-row", phone).forEach((r) => fill($(".dr .bar", r), dayFrac[r.dataset.k]));
 
     $$(".act", phone).forEach((btn) => {
       btn.addEventListener("click", (ev) => {
-        const kind = btn.dataset.kind;
         const r = btn.getBoundingClientRect();
         const dot = document.createElement("span");
         const size = Math.max(r.width, r.height) / 2;
@@ -110,19 +149,18 @@
         dot.style.top = ((ev.clientY || r.top + r.height / 2) - r.top - size / 2) + "px";
         btn.appendChild(dot);
         setTimeout(() => dot.remove(), 700);
-        if (kind === "feed") { lastFeed = Date.now(); counts.feeds++; counts.formula += 110; }
-        if (kind === "wet" || kind === "both") counts.wet++;
-        if (kind === "dirty" || kind === "both") counts.dirty++;
-        add(kind);
-        paintMinis(); tick();
+        day.log(btn.dataset.kind);
         if (navigator.vibrate) navigator.vibrate(8);
       });
     });
-
-    paintMinis(); tick();
-    setInterval(tick, 1000 * 20);
+    day.views.push(render);
+    render();
+    setInterval(render, 15000);
     phone.classList.add("live");
-  });
+  };
+
+  const heroDay = new Day(), storyDay = new Day();
+  $$(".phone[data-live]").forEach((phone) => mount(phone, phone.closest(".story") ? storyDay : heroDay));
 
   // ---------- Tilt the hero phone toward the pointer ----------
   const heroPhone = $(".hero .phone");
@@ -148,6 +186,17 @@
   const story = $(".story");
   const chapters = story ? $$(".chapter", story) : [];
   const bars = story ? $$(".progress i", story) : [];
+  // On phones the story stacks: size the phone to the room left above the chapter text.
+  const stacked = matchMedia("(max-width: 900px)");
+  const fitStory = () => {
+    if (!story) return;
+    if (!stacked.matches) { story.style.removeProperty("--fit"); return; }
+    const room = $(".phones", story).clientHeight;
+    story.style.setProperty("--fit", Math.max(.3, Math.min(.62, (room - 12) / 691)).toFixed(3));
+  };
+  fitStory();
+  addEventListener("resize", fitStory);
+  stacked.addEventListener("change", fitStory);
 
   const depthEls = $$("[data-depth]");
 
